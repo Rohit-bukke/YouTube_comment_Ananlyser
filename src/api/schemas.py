@@ -11,20 +11,22 @@ class CommentRequest(BaseModel):
         ...,
         min_length=1,
         description="Raw comment text to analyze",
-        example="This machine learning tutorial is incredibly clear and well explained!",
+        json_schema_extra={"example": "This machine learning tutorial is incredibly clear and well explained!"},
     )
 
 
 class BatchCommentRequest(BaseModel):
     comments: List[str] = Field(
         ...,
-        min_items=1,
+        min_length=1,
         description="List of comment texts to analyze in batch",
-        example=[
-            "Loved the walkthrough!",
-            "Completely useless and buggy code.",
-            "What is the time complexity of this model?",
-        ],
+        json_schema_extra={
+            "example": [
+                "Loved the walkthrough!",
+                "Completely useless and buggy code.",
+                "What is the time complexity of this model?",
+            ]
+        },
     )
 
 
@@ -51,7 +53,7 @@ class YouTubeAnalysisRequest(BaseModel):
     video_url: str = Field(
         ...,
         description="Full YouTube video URL or 11-character video ID",
-        example="https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        json_schema_extra={"example": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
     )
     max_comments: Optional[int] = Field(
         default=50,
