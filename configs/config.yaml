@@ -1,0 +1,44 @@
+data:
+  dataset_url: "https://raw.githubusercontent.com/entbappy/End-to-end-Youtube-Sentiment/refs/heads/main/notebooks/reddit_preprocessing.csv"
+  raw_data_path: "data/raw/raw_comments.csv"
+  processed_data_path: "data/processed/clean_comments.parquet"
+  text_column: "clean_comment"
+  target_column: "category"
+  test_size: 0.2
+  random_state: 42
+
+preprocessing:
+  remove_urls: true
+  remove_mentions: true
+  remove_special_chars: true
+  lowercase: true
+  expand_contractions: true
+  lemmatize: true
+  remove_stopwords: true
+
+features:
+  ngram_range: [1, 2]
+  max_features: 25000
+  min_df: 2
+  max_df: 0.95
+  sublinear_tf: true
+
+model:
+  target_metric: "f1_macro"
+  model_dir: "models"
+  model_path: "models/sentiment_pipeline.joblib"
+  metrics_path: "models/metrics.json"
+  class_names:
+    -1: "Negative"
+    0: "Neutral"
+    1: "Positive"
+
+api:
+  title: "YouTube Comment Sentiment Analyzer API"
+  version: "1.0.0"
+  host: "0.0.0.0"
+  port: 8000
+
+app:
+  title: "YouTube Sentiment & Audience Intelligence"
+  page_icon: "📊"

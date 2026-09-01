@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Data cache (raw downloads are re-downloadable)
+data/raw/
+data/processed/
+
+# Model artifacts (regenerated via training pipeline)
+models/*.joblib
+models/*.json
+
+# Distribution
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+*.env
+
+# Jupyter
+.ipynb_checkpoints/
